@@ -1,0 +1,80 @@
+.page--note-modifier {
+
+  .note-modifier__addsection {
+
+    .card__content {
+      padding: 0;
+    }
+  }
+
+  .note-modifier__addsection__top {
+    @include rem(padding, $card-padding);
+
+    border-bottom: 2px solid $card-action-border-color;
+  }
+
+  .note-modifier__addsection__bottom {
+    @include display-flex();
+    @include flex-direction(row);
+    @include align-items(stretch);
+  }
+
+  .note-modifier__addsection__textarea,
+  .note-modifier__addsection__live__container {
+    @include flex-basis(50%);
+  }
+
+  .note-modifier__addsection__textarea {
+
+    @include breakpoint(large) {
+      @include flex-basis(55%);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-basis(60%);
+    }
+
+    .CodeMirror {
+      height: auto;
+    }
+  }
+
+  .note-modifier__addsection__live__container {
+    @include rem(padding, $card-padding);
+
+    border-left: 2px solid $card-action-border-color;
+  }
+
+  .note-modifier__addsection__live {
+
+  }
+
+  .note-modifier__section {
+    @extend %card;
+
+    & + & {
+      @include rem(margin-top, 32px);
+    }
+
+    .note-modifier__section__empty {
+      @include display-flex();
+      @include justify-content(center);
+
+      * {
+        @include display-flex();
+        @include justify-content(center);
+        @include align-items(center);
+
+        margin-bottom: 0;
+
+        &:not(:last-child) {
+          margin-right: 12px;
+        }
+      }
+
+      p {
+        @extend %h5--raw;
+      }
+    }
+  }
+}

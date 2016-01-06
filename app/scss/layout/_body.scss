@@ -1,0 +1,26 @@
+html,
+body {
+  @include rem(min-width, 320px);
+
+  font-size: 16px;
+  overflow: auto;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: color('grey', 'lighten-2');
+  color: color('blue-grey', 'darken-4');
+  min-height: 100%;
+}
+
+body,
+input,
+textarea,
+keygen,
+select,
+button {
+  font-family: 'roboto', sans-serif, 'Vollkorn', serif;
+}

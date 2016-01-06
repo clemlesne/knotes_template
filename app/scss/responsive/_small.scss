@@ -1,0 +1,4 @@
+@mixin responsive-small {
+  @include menu-width(410px);
+  @include ui-size(16px);
+}

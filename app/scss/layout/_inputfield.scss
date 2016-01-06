@@ -1,0 +1,26 @@
+%inputfield {
+  @extend %transition-out;
+  @extend %border-radius;
+  @extend %h6;
+
+  @include rem(padding, 8px 12px);
+
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: color('grey', 'lighten-2');
+  outline: none 0;
+  font-family: inherit;
+  line-height: 1.4;
+
+  background: #fff;
+
+  &:focus {
+    @extend %shadow-1;
+    @extend %transition-in;
+
+    border-color: color('grey', 'lighten-3');
+  }
+}

@@ -1,0 +1,10 @@
+%label {
+  @include rem(font-size, 15px);
+
+  display: block;
+  font-weight: 500;
+}
+
+label {
+  @extend %label;
+}

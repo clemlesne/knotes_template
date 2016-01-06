@@ -1,0 +1,3 @@
+@mixin responsive-xsmall {
+  @include menu-width(460px);
+}

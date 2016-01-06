@@ -1,0 +1,24 @@
+@mixin responsive-large {
+  @include ui-size(15px);
+  @include menu-width(360px);
+
+  .navbar__entries {
+    display: none;
+  }
+
+  .menu__handler__button {
+    display: block;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  body.is-menu-visible {
+
+    .menu {
+      @include translateX(0);
+    }
+  }
+
+}

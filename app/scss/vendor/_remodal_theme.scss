@@ -1,0 +1,218 @@
+/*
+ *  Remodal - v1.0.5
+ *  Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
+ *  http://vodkabears.github.io/remodal/
+ *
+ *  Made by Ilya Makarov
+ *  Under MIT License
+ */
+
+/* ==========================================================================
+   Remodal's default mobile first theme
+   ========================================================================== */
+
+// Custom START
+.remodal__header {
+  @extend %card__title;
+
+  @include display-flex();
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(space-between);
+}
+
+.remodal__header__l {
+
+}
+
+.remodal__header__r {
+  @include display-flex();
+
+  button {
+    @include rem(line-height, 16px);
+    @include rem(padding, 6px, true);
+
+    &:before {
+      @include rem(font-size, 18px);
+      @include rem(line-height, 18px);
+      @include rem(height, 18px);
+      @include rem(width, 18px);
+
+      display: block;
+      content: "\00d7";
+    }
+  }
+}
+
+.remodal__content {
+  @extend %card__content;
+}
+
+.remodal__action {
+  @extend %card__action;
+}
+// Custom END
+
+/* Default theme styles for the background */
+
+.remodal-bg.remodal-is-opening,
+.remodal-bg.remodal-is-opened {
+  @include filter(blur(3px));
+}
+
+// Default theme styles of the overlay
+.remodal-overlay {
+  background: rgba(color('grey', 'darken-4'), .8);
+}
+
+.remodal-overlay.remodal-is-opening,
+.remodal-overlay.remodal-is-closing {
+  @include animation-fill-mode(forwards);
+}
+
+.remodal-overlay.remodal-is-opening {
+  @include animation(remodal-overlay-opening-keyframes .3s);
+}
+
+.remodal-overlay.remodal-is-closing {
+  @include animation(remodal-overlay-closing-keyframes .3s);
+}
+
+// Default theme styles of the wrapper
+.remodal-wrapper {
+  @include rem(padding, 10px 10px 0);
+}
+
+// Default theme styles of the modal dialog
+.remodal {
+  @include box-sizing(border-box);
+  @include transform(translate3d(0, 0, 0));
+  @include rem(margin-bottom, 10px);
+  // @include rem(padding, $card-padding);
+
+  width: 100%;
+  color: color('grey', 'darken-2');
+  background: #fff;
+}
+
+.remodal.remodal-is-opening,
+.remodal.remodal-is-closing {
+  @include animation-fill-mode(forwards);
+}
+
+.remodal.remodal-is-opening {
+  @include animation(remodal-opening-keyframes .3s)
+}
+
+.remodal.remodal-is-closing {
+  @include animation(remodal-closing-keyframes .3s);
+}
+
+// Vertical align of the modal dialog
+.remodal,
+.remodal-wrapper:after {
+  vertical-align: middle;
+}
+
+/* Keyframes
+   ========================================================================== */
+
+@-webkit-keyframes remodal-opening-keyframes {
+  from {
+    @include transition(scale(1.05));
+    @include opacity(0);
+  }
+  to {
+    @include transition(none);
+    @include opacity(1);
+  }
+}
+
+@keyframes remodal-opening-keyframes {
+  from {
+    @include transform(scale(1.05));
+    @include opacity(0);
+  }
+  to {
+    @include transform(none);
+    @include opacity(1);
+  }
+}
+
+@-webkit-keyframes remodal-closing-keyframes {
+  from {
+    @include transform(scale(1));
+    @include opacity(1);
+  }
+  to {
+    @include transform(scale(0.95));
+    @include opacity(0);
+  }
+}
+
+@keyframes remodal-closing-keyframes {
+  from {
+    @include transition(scale(1));
+    @include opacity(1);
+  }
+  to {
+    @include transition(scale(.95));
+    @include opacity(0);
+  }
+}
+
+@-webkit-keyframes remodal-overlay-opening-keyframes {
+  from {
+    @include opacity(0);
+  }
+  to {
+    @include opacity(1);
+  }
+}
+
+@keyframes remodal-overlay-opening-keyframes {
+  from {
+    @include opacity(0);
+  }
+  to {
+    @include opacity(1);
+  }
+}
+
+@-webkit-keyframes remodal-overlay-closing-keyframes {
+  from {
+    @include opacity(1);
+  }
+  to {
+    @include opacity(0);
+  }
+}
+
+@keyframes remodal-overlay-closing-keyframes {
+  from {
+    @include opacity(1);
+  }
+  to {
+    @include opacity(0);
+  }
+}
+
+/* Media queries
+   ========================================================================== */
+
+@media only screen and (min-width: 641px) {
+  .remodal {
+    max-width: 700px;
+  }
+}
+
+/* IE8
+   ========================================================================== */
+
+.lt-ie9 .remodal-overlay {
+  background: #2b2e38;
+}
+
+.lt-ie9 .remodal {
+  width: 700px;
+}

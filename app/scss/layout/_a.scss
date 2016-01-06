@@ -1,0 +1,17 @@
+%link {
+  color: color('blue', 'darken-3');
+  text-decoration: none;
+  display: inline-block;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: color('purple', 'darken-4');
+  }
+}
+
+a {
+  @extend %link;
+}

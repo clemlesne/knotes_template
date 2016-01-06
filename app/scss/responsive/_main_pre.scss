@@ -1,0 +1,35 @@
+@include skel-breakpoints((
+  xlarge: '(max-width: 1580px)',
+  large: '(max-width: 1280px)',
+  medium: '(max-width: 980px)',
+  small: '(max-width: 736px)',
+  xsmall: '(max-width: 480px)'
+));
+
+@include skel-layout((
+  containers: 87%,
+  grid: ( gutters: 15px ),
+  conditionals: true,
+  breakpoints: (
+    xlarge: (
+      containers: 85%,
+      grid: ( gutters: 10px )
+    ),
+    large: (
+      containers: 90%,
+      grid: ( gutters: 5px )
+    ),
+    medium: (
+      containers: 92%,
+      grid: ( gutters: 5px )
+    ),
+    small: (
+      containers: 94%,
+      grid: ( gutters: 5px )
+    ),
+    xsmall: (
+      containers: 94%,
+      grid: ( gutters: 5px )
+    )
+  )
+));

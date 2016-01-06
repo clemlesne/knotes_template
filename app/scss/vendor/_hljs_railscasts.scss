@@ -1,0 +1,154 @@
+/*
+Railscasts-like style (c) Visoft, Inc. (Damien White)
+*/
+
+$hljs-prefix: 'mkd__code__';
+
+
+.mkd__content {
+
+	table {
+		@extend %table;
+	}
+
+	blockquote,
+	pre > code {
+		@include rem(margin, 8px 0);
+		@include rem(padding, 8px);
+		@include border-radius(2px);
+
+		display: block;
+		overflow-x: auto;
+		background: color('grey', 'darken-4');
+		color: #e6e1dc;
+
+		&:before {
+			@include rem(padding, 4px);
+			@include rem(margin, 0 0 8px 8px);
+			@include border-radius(2px);
+
+			display: inline-block;
+			float: right;
+			border: 1px solid color('grey', 'base');
+			color: color('grey', 'base');
+			cursor: help;
+		}
+
+		&:hover {
+
+			&:before {
+				border-color: #fff;
+				color: #fff;
+			}
+		}
+	}
+
+	blockquote {
+		&:before {
+			content: "Quote";
+		}
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	pre > code {
+		&:before {
+			content: attr(class);
+		}
+	}
+}
+
+.#{$hljs-prefix}comment,
+.#{$hljs-prefix}quote {
+	color: #bc9458;
+	font-style: italic;
+}
+
+.#{$hljs-prefix}keyword,
+.#{$hljs-prefix}selector-tag {
+	color: #c26230;
+}
+
+.#{$hljs-prefix}string,
+.#{$hljs-prefix}number,
+.#{$hljs-prefix}regexp,
+.#{$hljs-prefix}variable,
+.#{$hljs-prefix}template-variable {
+	color: #a5c261;
+}
+
+.#{$hljs-prefix}subst {
+	color: #519f50;
+}
+
+.#{$hljs-prefix}tag,
+.#{$hljs-prefix}name {
+	color: #e8bf6a;
+}
+
+.#{$hljs-prefix}type {
+	color: #da4939;
+}
+
+
+.#{$hljs-prefix}symbol,
+.#{$hljs-prefix}bullet,
+.#{$hljs-prefix}built_in,
+.#{$hljs-prefix}attr,
+.#{$hljs-prefix}link {
+	color: #6d9cbe;
+}
+
+.#{$hljs-prefix}params {
+	color: #d0d0ff;
+}
+
+.#{$hljs-prefix}attribute {
+	color: #cda869;
+}
+
+.#{$hljs-prefix}meta,
+.#{$hljs-prefix}meta * {
+	color: #9b859d;
+}
+
+.#{$hljs-prefix}title,
+.#{$hljs-prefix}section {
+	color: #ffc66d;
+}
+
+.#{$hljs-prefix}addition {
+	background-color: #144212;
+	color: #e6e1dc;
+	display: inline-block;
+	width: 100%;
+}
+
+.#{$hljs-prefix}deletion {
+	background-color: #600;
+	color: #e6e1dc;
+	display: inline-block;
+	width: 100%;
+}
+
+.#{$hljs-prefix}selector-class {
+	color: #9b703f;
+}
+
+.#{$hljs-prefix}selector-id {
+	color: #8b98ab;
+}
+
+.#{$hljs-prefix}emphasis {
+	font-style: italic;
+}
+
+.#{$hljs-prefix}strong {
+	font-weight: bold;
+}
+
+.#{$hljs-prefix}link {
+	text-decoration: underline;
+}

@@ -1,0 +1,29 @@
+.footer {
+  @extend %shadow-1--inverse;
+
+  background: $navbar-bg;
+
+  &,
+  a {
+    color: #fff;
+  }
+}
+
+.footer__container {
+  @include rem('padding', 18px 32px);
+}
+
+.footer__references,
+.footer__authors {
+  margin: 0;
+  font-weight: 600;
+  @include rem(font-size, 13px);
+}
+
+.footer__references {
+  text-align: left;
+}
+
+.footer__authors {
+  text-align: right;
+}

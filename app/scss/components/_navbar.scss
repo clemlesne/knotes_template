@@ -1,0 +1,47 @@
+.navbar {
+  @extend %shadow-1;
+
+  background: $navbar-bg;
+}
+
+.navbar__container {
+  @include display-flex();
+  @include align-items(center);
+  @include justify-content(space-between);
+}
+
+.navbar__title {
+  @include display-flex();
+  @include flex-shrink(0);
+
+  a {
+    @include rem(font-size, 28px);
+    @include rem(line-height, 62px);
+
+    font-weight: 300;
+    color: color('grey', 'lighten-5');
+  }
+}
+
+.navbar__entries {
+  @include display-flex();
+
+  .navbar__entry {
+
+    @include flex-shrink(1);
+    @include display-flex();
+    @include align-items(center);
+    @include rem(margin, 12px 8px);
+
+    .navbar__entry__content {
+      @extend %button;
+    }
+
+    &.navbar__entry--active {
+
+      .navbar__entry__content {
+        color: color('blue', 'darken-4') !important;
+      }
+    }
+  }
+}

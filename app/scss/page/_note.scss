@@ -1,0 +1,43 @@
+.page--note {
+
+  .note__addsection {
+    @extend %card;
+    
+    .note__addsection__textarea {
+
+    }
+
+    .note__addsection__textarea__live__content {
+
+    }
+  }
+
+  .note__section {
+    @extend %card;
+
+    & + & {
+      @include rem(margin-top, 32px);
+    }
+
+    .note__section__empty {
+      @include display-flex();
+      @include justify-content(center);
+
+      * {
+        @include display-flex();
+        @include justify-content(center);
+        @include align-items(center);
+
+        margin-bottom: 0;
+
+        &:not(:last-child) {
+          margin-right: 12px;
+        }
+      }
+
+      p {
+        @extend %h5--raw;
+      }
+    }
+  }
+}

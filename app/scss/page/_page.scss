@@ -1,0 +1,13 @@
+.page__title {
+
+  .page__title__container {
+    @include display-flex();
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(space-between);
+  }
+
+  .page__title__text {
+    @extend %h1--raw;
+  }
+}

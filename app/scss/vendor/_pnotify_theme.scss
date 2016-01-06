@@ -1,0 +1,28 @@
+$notify-bg: color('grey', 'darken-4');
+
+.ui-pnotify  {
+
+}
+
+.ui-pnotify-container {
+  @extend %shadow-3;
+  @extend %border-radius;
+
+  @include rem(padding, 12px 18px);
+
+  color: #fff;
+  background: $notify-bg;
+}
+
+.ui-pnotify-title {
+  @include rem(font-size, 16px);
+  @include rem(line-height, 20px);
+}
+
+.ui-pnotify-text {
+  @include rem(font-size, 14px);
+  @include rem(line-height, 16px);
+
+  text-align: left;
+  // overflow: hidden;
+}

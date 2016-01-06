@@ -1,0 +1,225 @@
+//# Compass fonction
+//## Ajout de '$is-important'
+//## src: https://github.com/Compass/compass/blob/master/core/stylesheets/compass/typography/_units.scss#L169
+@mixin rem($property, $values, $is-important: false, $use-px-fallback: $rem-with-px-fallback) {
+
+  // get converted values.
+  $values: list-convert-rems($values);
+  $px-values: map-get($values, px);
+  $values: map-get($values, rem);
+
+  // Use pixel fallback for browsers that don't understand rem units.
+  @if $use-px-fallback and $px-values != $values {
+    @if $is-important {
+      #{$property}: $px-values !important;
+
+    } @else {
+      #{$property}: $px-values;
+    }
+  }
+
+  // Use rem values for everyone else (overrides pixel values).
+  @if $is-important {
+    #{$property}: $values !important;
+
+  } @else {
+    #{$property}: $values;
+  }
+}
+
+@mixin blur($px) {
+  -webkit-filter: blur($px);
+  -moz-filter: blur($px);
+  -o-filter: blur($px);
+  -ms-filter: blur($px);
+}
+
+@mixin font-size($size ) {
+  font-size: $size;
+  font-size: calculateRem($size );
+}
+
+@mixin line-height($size ) {
+  line-height: $size;
+  line-height: calculateRem($size );
+}
+
+/**
+* clearfix
+* Uses:
+* @include clearfix();
+*/
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/**
+* opacity
+* Uses:
+* @include opacity(.7 );
+*
+*/
+@mixin opacity($opacity, $isImportant: false ) {
+  -khtml-opacity: $opacity if($isImportant, !important, null );
+  -moz-opacity: $opacity if($isImportant, !important, null );
+  opacity: $opacity if($isImportant, !important, null );
+
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie) if($isImportant, !important, null ); //IE8
+  zoom: 1; /* HACK POUR IE */
+
+}
+
+/**
+* background-image
+* Uses:
+* @include background-image("background" );
+*
+*/
+$image-ressource: 'img' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2X';
+
+@mixin background-image($name, $size: false, $extension: $fallback-extension ){
+  background-image: includeJSFRessource($image-ressource, #{$name + '.' + $extension});
+
+  @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+    background-image: includeJSFRessource($image-ressource, #{$name + $retina-suffix + '.' + $extension});
+  }
+
+  @if($size){
+    background-size: $size;
+  }
+}
+
+/**
+* background-image
+* Uses:
+* @include transparent-shades('dark', #000000 );
+*
+*/
+
+// Extend this class to save bytes
+.transparent-background {
+  background-color: transparent;
+  zoom: 1;
+}
+
+// The mixin
+@mixin background-transparent($color, $alpha ) {
+  $rgba: rgba($color, $alpha);
+  $ie-hex-str: ie-hex-str($rgba);
+  @extend .transparent-background;
+  background-color: $rgba;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+}
+
+/**
+* animation
+* Uses:
+* .object-to-animate {
+*     @include animation('move-the-object .5s 1', 'move-the-object-again .5s 1 .5s');
+* }
+*/
+@mixin animation($animate ) {
+  $max: length($animate);
+  $animations: '';
+
+  @for $i from 1 through $max {
+    $animations: #{$animations + nth($animate, $i)};
+
+    @if $i < $max {
+      $animations: #{$animations + ", "};
+    }
+  }
+
+  @include animation($animations );
+
+}
+
+/**
+* keyframe
+* Uses:
+* @include keyframes(move-the-object) {
+*     0%   { left: 100px; }
+*     100% { left: 200px; }
+* }
+*/
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+
+  }
+  @keyframes #{$animationName} {
+    @content;
+
+  }
+}
+
+@mixin centerVerticaly-1 {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+}
+@mixin centerVerticaly-2 {
+  position: relative;
+  top: 50%;
+
+  @include transform(translateY(-50%));
+
+}
+
+/**
+* centerBoxinox
+* Uses:
+* @include centerBoxinox();
+*/
+@mixin centerBoxinBox {
+  @include flexbox((
+  display: flex,
+  flex-direction: row
+  ));
+
+  text-align: center;
+
+  * {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+
+    padding-top: 0;
+    padding-bottom: 0;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      height:  100%;
+      vertical-align: middle;
+      width: 0px;
+
+    }
+  }
+}
+
+@mixin box-shadow-2($arg_1, $arg_2 ) {
+  @include box-shadow($arg_1 );
+  @include box-shadow($arg_2 );
+
+}

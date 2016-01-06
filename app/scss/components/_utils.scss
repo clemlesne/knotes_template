@@ -1,0 +1,17 @@
+.align--left {
+  @include justify-content(flex-start !important);
+
+  text-align: right !important;
+}
+
+.align--center {
+  @include justify-content(center !important);
+
+  text-align: center !important;
+}
+
+.align--right {
+  @include justify-content(flex-end !important);
+
+  text-align: right !important;
+}

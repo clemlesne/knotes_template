@@ -1,0 +1,44 @@
+.form {
+
+}
+
+.form__container {
+
+  .form__block + .form__block {
+    @include rem(margin-top, 18px);
+  }
+}
+
+.form__block {
+
+  legend {
+    @extend %h5;
+
+    @include rem(margin-bottom, 4px);
+  }
+
+  .form__block__sub {
+    @include rem(padding, 8px 0 4px 12px);
+
+    border-left: 2px solid color('blue', 'darken-2');
+  }
+
+  input,
+  textarea {
+    @extend %inputfield;
+
+    &:not(:first-child) {
+      @include rem(margin-top, 12px);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+.form__action {
+  @include rem(margin-top, 18px);
+
+  text-align: right;
+}

@@ -1,0 +1,155 @@
+$card-action-border-color: color('grey', 'lighten-3');
+$card-action-padding-h: $card-padding*(2/3);
+$card-action-padding-v: $card-padding*(2/3);
+$card-title-padding-v: $card-action-padding-h;
+$card-title-padding-h: $card-action-padding-v;
+$card-container-padding-v: 12px;
+$card-container-padding-h: 0;
+
+
+%card--effect {
+  @extend %shadow-1;
+
+  background: #fff;
+}
+
+%card {
+  @extend %card--effect;
+  @extend %border-radius;
+
+  @include rem(margin, $card-container-padding-v $card-container-padding-h);
+
+  overflow: hidden;
+}
+
+%card__container {
+  @include box-sizing(border-box);
+
+  overflow: hidden;
+  width: 100%;
+}
+
+%card__title {
+  @include display-flex();
+  @include align-items(center);
+  @include justify-content(space-between);
+  @include rem(padding, $card-title-padding-v $card-title-padding-h);
+
+  border-bottom: 1px solid $card-action-border-color;
+
+  p,
+  a {
+    @extend %h3--raw;
+  }
+}
+
+%card__content {
+  @extend %h6--raw;
+
+  @include rem(padding, $card-padding);
+
+  text-align: justify;
+  background: color('grey', 'lighten-5');
+
+  @include breakpoint(medium) {
+    text-align: left;
+  }
+
+  > *:not(table) {
+    p, a {
+      &:not(.button) {
+        @extend %h6;
+      }
+    }
+  }
+
+  p {
+
+    a {
+      margin: 0;
+    }
+  }
+
+  ul {
+    li {
+
+      a {
+        margin: 0;
+      }
+    }
+  }
+
+  ul {
+    @include rem(margin-bottom, 12px);
+
+    list-style-type: disc;
+    list-style-position: inside;
+
+    li {
+      @include rem(margin-left, 8px);
+    }
+  }
+
+  figure {
+    img {
+      @extend %shadow-1;
+
+      @include rem(margin, 36px 0);
+
+      display: block;
+      text-align: center;
+      max-width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      @include rem(font-size, 14px);
+      @include rem(margin-top, 4px);
+
+      font-weight: 300;
+    }
+  }
+}
+
+%card__action {
+  @include display-flex();
+  @include align-items(center);
+  @include justify-content(flex-end);
+
+  @include rem(padding, $card-action-padding-h $card-action-padding-v);
+
+  border-top: 1px solid $card-action-border-color;
+
+  * {
+    &:not(:last-child) {
+      @include rem(margin-right, 8px);
+    }
+  }
+}
+
+
+.card__content {
+  @extend %card__content;
+}
+
+.card__container {
+  @extend %card__container;
+}
+
+.card__title {
+  @extend %card__title;
+}
+
+.card__action {
+  @extend %card__action;
+}
+
+.card {
+  @extend %card;
+
+  &.card--raw {
+    .card__content {
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,90 @@
+%h1--raw {
+  @include rem(font-size, 36px);
+
+  font-weight: 300;
+}
+
+%h1 {
+  @extend %h1--raw;
+
+  @include rem(margin-bottom, 36px/2);
+}
+
+%h2 {
+  @include rem(font-size, 28px);
+  @include rem(margin-bottom, 28px/2);
+
+  font-weight: 400;
+  // color: color('blue', 'lighten-1');
+}
+
+%h3--raw {
+  @include rem(font-size, 24px);
+
+  font-weight: 500;
+}
+
+%h3 {
+  @extend %h3--raw;
+
+  @include rem(margin-bottom, 26px/2);
+}
+
+%h4 {
+  @include rem(font-size, 20px);
+  @include rem(margin-bottom, 22px/2);
+
+  font-weight: 500;
+}
+
+%h5--raw {
+  @include rem(font-size, 16px);
+
+  font-weight: 500;
+}
+
+%h5 {
+  @extend %h5--raw;
+
+  @include rem(margin-bottom, 20px/2);
+}
+
+%h6--raw {
+  @include rem(font-size, 14px);
+
+  font-weight: 400;
+}
+
+%h6 {
+  @extend %h6--raw;
+
+  @include rem(margin-bottom, 14px/2);
+}
+
+h1 {
+  @extend %h1;
+}
+
+h2 {
+  @extend %h2;
+}
+
+h3 {
+  @extend %h3;
+}
+
+h4 {
+  @extend %h4;
+}
+
+h5 {
+  @extend %h5;
+}
+
+h6 {
+  @extend %h6;
+}
+
+strong {
+  font-weight: 500;
+}

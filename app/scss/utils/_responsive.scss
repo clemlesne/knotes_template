@@ -1,0 +1,39 @@
+//== Media queries
+//
+//##
+
+$responsive-retinalevel-1: 1;
+$responsive-retinalevel-2: 2;
+$responsive-retinalevel-3: 3;
+
+@mixin responsive-retinalevel-engine($dppx) {
+  @media only screen and (-webkit-min-device-pixel-ratio: $dppx),
+      only screen and (min-resolution: $dppx * 96dpi) {
+    @content;
+  }
+}
+
+@mixin responsive-retinalevel($level) {
+  @if $level == 1 {
+    @include responsive-retinalevel-engine($responsive-retinalevel-1) { @content; }
+
+  } @else if $level == 2 {
+    @include responsive-retinalevel-engine($responsive-retinalevel-2) { @content; }
+
+  } @else if $level == 3 {
+    @include responsive-retinalevel-engine($responsive-retinalevel-3) { @content; }
+
+  } @else {
+    @warn 'responsive: Not valid value for @mixin responsive-retinalevel({$level}) !';
+  }
+}
+
+@mixin responsive-ismobile() {
+  @include breakpoint(medium) {
+    @content;
+  }
+}
+
+@mixin responsive-isnotmobile() {
+  @media only screen and (min-width: to-rem($break-large)) { @content; }
+}

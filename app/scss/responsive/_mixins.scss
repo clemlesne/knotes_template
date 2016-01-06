@@ -1,0 +1,14 @@
+@mixin menu-width($width) {
+
+  .menu {
+    @include translateX(-$width);
+    @include rem(min-width, $width);
+  }
+}
+
+@mixin ui-size($size) {
+  html,
+  body {
+    font-size: $size;
+  }
+}
